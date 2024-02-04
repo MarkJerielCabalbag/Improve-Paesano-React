@@ -1,14 +1,27 @@
 import React from "react";
-import { useSelector } from "react-redux";
-
-const BarbersModal = ({ show }) => {
+import { useSelector, useDispatch } from "react-redux";
+import { resetBarber } from "../../state/state";
+const BarbersModal = ({ show, setShow }) => {
   const selectBarber = useSelector((state) => state.book.value.barber);
-
+  const dispatch = useDispatch();
+  const handleResetBarber = () => {
+    dispatch(resetBarber());
+  };
   return (
     <>
       {show && (
-        <div className="modal" tabIndex="-1" role="dialog">
-          <div className="modal-dialog" role="document">
+        <div
+          className={`modal fade ${show ? "show" : ""}`}
+          tabIndex="-1"
+          role="dialog"
+          style={{ display: show ? "block" : "none" }}
+        >
+          <div
+            className="modal-dialog"
+            id="staticBackdrop"
+            data-bs-backdrop="static"
+            role="document"
+          >
             {selectBarber.map((barber) => (
               <div className="modal-content" key={barber.id}>
                 <div className="modal-header">
@@ -20,6 +33,7 @@ const BarbersModal = ({ show }) => {
                     className="btn-close"
                     data-bs-dismiss="modal"
                     aria-label="Close"
+                    onClick={handleResetBarber}
                   ></button>
                 </div>
                 <div className="modal-body">
@@ -29,7 +43,9 @@ const BarbersModal = ({ show }) => {
                   <button
                     type="button"
                     className="btn btn-secondary"
-                    data-bs-dismiss="modal"
+                    onClick={() => {
+                      setShow(false);
+                    }}
                   >
                     Close
                   </button>

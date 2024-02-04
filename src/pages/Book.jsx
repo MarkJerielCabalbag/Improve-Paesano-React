@@ -7,10 +7,7 @@ import BarbersModal from "../components/modal/BarbersModal";
 const Book = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  const handleChooseBarberId = (barberId) => {
-    chooseBarber(barberId);
-    setShow(true);
-  };
+
   return (
     <>
       <div className="d-sm-flex flex-column container-sm mt-5 mb-5">
@@ -45,7 +42,7 @@ const Book = () => {
                   type="button"
                   className="btn btn-primary"
                   data-bs-toggle="modal"
-                  data-bs-target="#barber1"
+                  data-bs-target="#staticBackdrop"
                   onClick={() => {
                     dispatch(chooseBarber(barber.id));
                     setShow(true);
@@ -56,7 +53,7 @@ const Book = () => {
               </div>
             </div>
           ))}
-          <BarbersModal show={show} />
+          <BarbersModal show={show} setShow={setShow} />
         </div>
       </div>
     </>

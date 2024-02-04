@@ -22,10 +22,13 @@ export const bookSlice = createSlice({
         id: shortid.generate(),
       });
     },
+    resetBarber: (state) => {
+      state.value.barber = initialState.value.barber;
+    },
   },
 });
 
-export const { chooseBarber } = bookSlice.actions;
+export const { chooseBarber, resetBarber } = bookSlice.actions;
 
 export const store = configureStore({
   reducer: {
