@@ -7,33 +7,28 @@ const NameInput = () => {
   const [showInput, setShowInput] = useState(false);
   return (
     <>
-      <Input label={"Your Name"} icon={faUser} />
-      {
+      <p className="lead fs-6">
+        {showInput ? "Note: you can only add 2 clients at the moment" : ""}
+      </p>
+      <Input label={"Your Name"} icon={faUser} placeholder={"Your name"} />
+      {showInput ? (
         <AddedInput
           showInput={showInput}
-          label={"Added Client"}
+          label={"Added client"}
           icon={faUserFriends}
+          placeholder={"Your Name"}
         />
-      }
+      ) : (
+        ""
+      )}
       <Button
-        variant={"primary mt-2 w-100"}
+        variant={`${showInput ? "danger" : "primary"} mt-2 w-100 `}
         onClick={() => {
-          setShowInput(true);
+          showInput ? setShowInput(false) : setShowInput(true);
         }}
       >
-        {"Add More Client"}
+        {showInput ? "Remove added client" : "Add client"}
       </Button>
-      {
-        <Button
-          showInput={showInput}
-          variant={"warning w-100 mt-2"}
-          onClick={() => {
-            setShowInput(false);
-          }}
-        >
-          {"Remove Newly Added Client"}
-        </Button>
-      }
     </>
   );
 };

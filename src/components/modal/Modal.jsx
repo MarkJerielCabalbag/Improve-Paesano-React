@@ -7,7 +7,7 @@ import NameInput from "./NameInput";
 
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
-  const [showInput, setShowInput] = useState(false);
+
   return (
     <div>
       {show && (

@@ -1,16 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 
-const Input = ({ label, type, onChange, icon }) => {
+const Input = ({ label, type, onChange, icon, placeholder }) => {
   return (
     <div>
-      <label className="form-label">
-        <p>
-          <FontAwesomeIcon icon={icon} /> {label}
-        </p>
+      <label className="form-label mb-2">
+        <FontAwesomeIcon icon={icon} /> {label}
       </label>
 
-      <input type={`${type}`} className="form-control" onChange={onChange} />
+      <input
+        type={`${type}`}
+        className="form-control mb-2"
+        onChange={onChange}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
