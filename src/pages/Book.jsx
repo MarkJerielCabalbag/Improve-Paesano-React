@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import book from "../components/objects/book";
 import { useDispatch, useSelector } from "react-redux";
-import { chooseBarber, filteredBarber } from "../state/state";
+import { chooseBarber } from "../state/state";
 import Modal from "../components/modal/Modal";
 
 const Book = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-  const barber = useSelector((state) => state.book.value.barber);
-  console.log(barber);
+
   return (
     <>
       <div className="d-sm-flex flex-column container-sm mt-5 mb-5">
@@ -52,7 +51,7 @@ const Book = () => {
               </div>
             </div>
           ))}
-          {<Modal show={show} setShow={setShow} className="modal" />}
+          {<Modal show={show} setShow={setShow} />}
         </div>
       </div>
     </>

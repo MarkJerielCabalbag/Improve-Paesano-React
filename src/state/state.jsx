@@ -19,14 +19,10 @@ export const bookSlice = createSlice({
       );
       state.value.barber = chosenBarber;
     },
-
-    filteredBarber: (state, action) => {
-      state.value.barber = state.value.filteredBarber;
-    },
   },
 });
 
-export const { chooseBarber, filteredBarber } = bookSlice.actions;
+export const { chooseBarber } = bookSlice.actions;
 
 export const store = configureStore({
   reducer: {

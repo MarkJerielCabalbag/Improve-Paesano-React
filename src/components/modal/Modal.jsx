@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
+
+import BarberInfo from "./BarberInfo";
+
+import NameInput from "./NameInput";
 
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
-
+  const [showInput, setShowInput] = useState(false);
   return (
     <div>
       {show && (
@@ -30,7 +34,10 @@ const Modal = ({ show, setShow }) => {
                     }}
                   ></button>
                 </div>
-                <div className="modal-body"></div>
+                <div className="modal-body">
+                  <BarberInfo />
+                  <NameInput />
+                </div>
                 <div className="modal-footer">
                   <button
                     type="button"
