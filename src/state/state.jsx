@@ -5,6 +5,7 @@ import shortid from "shortid";
 const initialState = {
   value: {
     barber: [],
+    filteredBarber: [],
   },
 };
 
@@ -13,22 +14,19 @@ export const bookSlice = createSlice({
   initialState,
   reducers: {
     chooseBarber: (state, action) => {
-      const selectedBarber = book.find(
+      const chosenBarber = book.filter(
         (barber) => barber.id === action.payload
       );
-      state.value.barber.push({
-        ...book,
-        selectedBarber,
-        id: shortid.generate(),
-      });
+      state.value.barber = chosenBarber;
     },
-    resetBarber: (state) => {
-      state.value.barber = initialState.value.barber;
+
+    filteredBarber: (state, action) => {
+      state.value.barber = state.value.filteredBarber;
     },
   },
 });
 
-export const { chooseBarber, resetBarber } = bookSlice.actions;
+export const { chooseBarber, filteredBarber } = bookSlice.actions;
 
 export const store = configureStore({
   reducer: {

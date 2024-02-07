@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import book from "../components/objects/book";
-import { useDispatch } from "react-redux";
-import { chooseBarber } from "../state/state";
-import BarbersModal from "../components/modal/BarbersModal";
+import { useDispatch, useSelector } from "react-redux";
+import { chooseBarber, filteredBarber } from "../state/state";
+import Modal from "../components/modal/Modal";
 
 const Book = () => {
   const [show, setShow] = useState(false);
   const dispatch = useDispatch();
-
+  const barber = useSelector((state) => state.book.value.barber);
+  console.log(barber);
   return (
     <>
       <div className="d-sm-flex flex-column container-sm mt-5 mb-5">
@@ -41,8 +42,6 @@ const Book = () => {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  data-bs-toggle="modal"
-                  data-bs-target="#staticBackdrop"
                   onClick={() => {
                     dispatch(chooseBarber(barber.id));
                     setShow(true);
@@ -53,7 +52,7 @@ const Book = () => {
               </div>
             </div>
           ))}
-          <BarbersModal show={show} setShow={setShow} />
+          {<Modal show={show} setShow={setShow} className="modal" />}
         </div>
       </div>
     </>
