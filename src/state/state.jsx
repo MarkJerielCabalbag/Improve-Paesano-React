@@ -9,10 +9,17 @@ const initialState = {
     barber: [],
     filteredBarber: [],
     showInput: false,
+
     service: [],
+
     addedService: [],
+
+    //service radio input
     selectedRadio: false,
+
+    //added service radio input
     selectedAddedRadio: false,
+    addAllInputValue: [],
   },
 };
 
@@ -45,6 +52,9 @@ export const bookSlice = createSlice({
     selectedRadio: (state, action) => {
       state.value.selectedRadio = action.payload;
     },
+    addAllInputValue: (state, action) => {
+      state.value.addAllInputValue = action.payload;
+    },
   },
 });
 
@@ -55,6 +65,7 @@ export const {
   addedService,
   selectedAddedRadio,
   selectedRadio,
+  addAllInputValue,
 } = bookSlice.actions;
 
 export const store = configureStore({
