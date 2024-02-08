@@ -3,12 +3,15 @@ import Button from "../button/Button";
 import AddedInput from "../input/AddedInput";
 import Input from "../input/Input";
 import { faUser, faUserFriends } from "@fortawesome/free-solid-svg-icons";
+import { useSelector, useDispatch } from "react-redux";
+import { showInput } from "../../state/state";
 const NameInput = () => {
-  const [showInput, setShowInput] = useState(false);
+  const show = useSelector((state) => state.book.value.showInput);
+  const dispatch = useDispatch();
   return (
     <>
       <p className="lead fs-6">
-        {showInput ? "Note: you can only add 2 clients at the moment" : ""}
+        {show ? "Note: you can only add 2 clients at the moment" : ""}
       </p>
       <Input
         label={"Your Name"}
@@ -16,9 +19,9 @@ const NameInput = () => {
         placeholder={"Your name"}
         className={"form-control"}
       />
-      {showInput ? (
+      {show ? (
         <AddedInput
-          showInput={showInput}
+          showInput={show}
           label={"Added client"}
           icon={faUserFriends}
           placeholder={"Your Name"}
@@ -27,12 +30,12 @@ const NameInput = () => {
         ""
       )}
       <Button
-        variant={`${showInput ? "danger" : "primary"} mt-2 w-100 `}
+        variant={`${show ? "danger" : "primary"} mt-2 w-100 `}
         onClick={() => {
-          showInput ? setShowInput(false) : setShowInput(true);
+          show ? dispatch(showInput(false)) : dispatch(showInput(true));
         }}
       >
-        {showInput ? "Remove added client" : "Add client"}
+        {show ? "Remove added client" : "Add client"}
       </Button>
     </>
   );

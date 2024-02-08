@@ -7,6 +7,7 @@ import NameInput from "./NameInput";
 import TimeDate from "./TimeDate";
 import TelNumber from "./TelNumber";
 import Services from "./Services";
+import Sessions from "./Sessions";
 
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
@@ -46,6 +47,7 @@ const Modal = ({ show, setShow }) => {
                   <TimeDate />
                   <TelNumber />
                   <Services />
+                  <Sessions />
                 </div>
                 <div className="modal-footer">
                   <button
