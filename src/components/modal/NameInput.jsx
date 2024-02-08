@@ -10,7 +10,12 @@ const NameInput = () => {
       <p className="lead fs-6">
         {showInput ? "Note: you can only add 2 clients at the moment" : ""}
       </p>
-      <Input label={"Your Name"} icon={faUser} placeholder={"Your name"} />
+      <Input
+        label={"Your Name"}
+        icon={faUser}
+        placeholder={"Your name"}
+        className={"form-control"}
+      />
       {showInput ? (
         <AddedInput
           showInput={showInput}

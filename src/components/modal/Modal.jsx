@@ -4,6 +4,9 @@ import { useSelector } from "react-redux";
 import BarberInfo from "./BarberInfo";
 
 import NameInput from "./NameInput";
+import TimeDate from "./TimeDate";
+import TelNumber from "./TelNumber";
+import Services from "./Services";
 
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
@@ -34,9 +37,15 @@ const Modal = ({ show, setShow }) => {
                     }}
                   ></button>
                 </div>
-                <div className="modal-body">
+                <div
+                  className="modal-body overflow-y-scroll"
+                  style={{ height: "300px" }}
+                >
                   <BarberInfo />
                   <NameInput />
+                  <TimeDate />
+                  <TelNumber />
+                  <Services />
                 </div>
                 <div className="modal-footer">
                   <button
