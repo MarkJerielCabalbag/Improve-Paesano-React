@@ -22,7 +22,7 @@ const NameInput = () => {
       {show ? (
         <AddedInput
           showInput={show}
-          label={"Added client"}
+          label={"You companion name"}
           icon={faUserFriends}
           placeholder={"Your Name"}
         />

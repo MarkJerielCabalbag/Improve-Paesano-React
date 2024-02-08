@@ -38,29 +38,35 @@ const Modal = ({ show, setShow }) => {
                     }}
                   ></button>
                 </div>
-                <div
-                  className="modal-body overflow-y-scroll"
-                  style={{ height: "300px" }}
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                  }}
                 >
-                  <BarberInfo />
-                  <NameInput />
-                  <TimeDate />
-                  <TelNumber />
-                  <Services />
-                  <Sessions />
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => setShow(false)}
+                  <div
+                    className="modal-body overflow-y-scroll"
+                    style={{ height: "300px" }}
                   >
-                    Close
-                  </button>
-                  <button type="button" className="btn btn-primary">
-                    Understood
-                  </button>
-                </div>
+                    <BarberInfo />
+                    <NameInput />
+                    <TimeDate />
+                    <TelNumber />
+                    <Services />
+                    <Sessions />
+                  </div>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-secondary"
+                      onClick={() => setShow(false)}
+                    >
+                      Close
+                    </button>
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                </form>
               </div>
             </div>
           ))}

@@ -1,30 +1,40 @@
 import { useState } from "react";
 import Input from "../input/Input";
 import {
-  fa0,
   faBusinessTime,
-  faCheck,
   faUser,
   faUserFriends,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import services from "../objects/services";
 import AddedRadio from "../input/AddedRadio";
 import addedServices from "../objects/addedServices";
+import {
+  service,
+  selectedRadio,
+  addedService,
+  selectedAddedRadio,
+  showInput,
+} from "../../state/state";
 const Services = () => {
-  // const [selectedService, setSelectedService] = useState(false);
-  // const [selectedAddedService, setSelectedAddedService] = useState(false);
-  // const handleChangeCheckBox = (id) => {
-  //   setSelectedService(id);
-  // };
-  // const handleAddedRadio = (id) => {
-  //   setSelectedAddedService(id);
-  // };
-
-  const service = useSelector((state) => state.book.value.service);
   const show = useSelector((state) => state.book.value.showInput);
+  const radio = useSelector((state) => state.book.value.selectedRadio);
+  const addedRadio = useSelector(
+    (state) => state.book.value.selectedAddedRadio
+  );
 
+  const disptach = useDispatch();
+
+  const handleChangeRadio = (id) => {
+    disptach(service(id));
+    disptach(selectedRadio(id));
+  };
+
+  const handleAddedChangeRadio = (id) => {
+    disptach(addedService(id));
+    disptach(selectedAddedRadio(id));
+  };
   return (
     <div>
       <p className="display-9">
@@ -40,9 +50,9 @@ const Services = () => {
             key={service.id}
             type={"radio"}
             className={"form-check-input"}
-            //checked={service.id === selectedService}
+            checked={service.id === radio}
             value={service.id}
-            //onChange={() => handleChangeCheckBox(service.id)}
+            onChange={() => handleChangeRadio(service.id)}
             icon={service.icon}
           />
         ))}
@@ -50,7 +60,7 @@ const Services = () => {
       {show && (
         <>
           <p>
-            <FontAwesomeIcon icon={faUserFriends} /> Service for added client
+            <FontAwesomeIcon icon={faUserFriends} /> Service for your companion
           </p>
           <div className="d-flex justify-content-between">
             {addedServices.map((service) => (
@@ -59,9 +69,11 @@ const Services = () => {
                 key={service.id}
                 type={"radio"}
                 className={"form-check-input"}
-                // checked={service.id === selectedAddedService}
+                checked={service.id === addedRadio}
                 value={service.id}
-                //onChange={() => handleAddedRadio(service.id)}
+                onChange={() => {
+                  handleAddedChangeRadio(service.id);
+                }}
                 icon={service.icon}
               />
             ))}
