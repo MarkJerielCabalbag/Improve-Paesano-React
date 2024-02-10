@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector, useDispatch } from "react-redux";
 import BarberInfo from "./BarberInfo";
-
 import NameInput from "./NameInput";
 import TimeDate from "./TimeDate";
 import TelNumber from "./TelNumber";
@@ -62,7 +60,11 @@ const Modal = ({ show, setShow }) => {
                     >
                       Close
                     </button>
-                    <button type="submit" className="btn btn-primary">
+                    <button
+                      type="submit"
+                      className="btn btn-primary"
+                      onClick={() => {}}
+                    >
                       Submit
                     </button>
                   </div>

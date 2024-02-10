@@ -10,11 +10,21 @@ import {
   selectedRadio,
   addedService,
   service,
+  companion,
+  clientName,
 } from "../../state/state";
 const NameInput = () => {
   const show = useSelector((state) => state.book.value.showInput);
+
   const dispatch = useDispatch();
 
+  const handleChangeInput = (e) => {
+    dispatch(clientName(e.target.value));
+  };
+
+  const handleChangeAddedInput = (e) => {
+    dispatch(companion(e.target.value));
+  };
   return (
     <>
       <p className="lead fs-6">
@@ -25,6 +35,7 @@ const NameInput = () => {
         icon={faUser}
         placeholder={"Your name"}
         className={"form-control"}
+        onChange={handleChangeInput}
       />
       {show ? (
         <AddedInput
@@ -32,6 +43,7 @@ const NameInput = () => {
           label={"You companion name"}
           icon={faUserFriends}
           placeholder={"Your Name"}
+          onChange={handleChangeAddedInput}
         />
       ) : (
         ""
@@ -41,10 +53,8 @@ const NameInput = () => {
         onClick={() => {
           dispatch(selectedRadio(true));
           dispatch(selectedAddedRadio(true));
-
           dispatch(addedService([]));
           dispatch(service([]));
-
           show ? dispatch(showInput(false)) : dispatch(showInput(true));
         }}
       >

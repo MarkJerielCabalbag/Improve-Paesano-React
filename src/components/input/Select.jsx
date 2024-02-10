@@ -1,23 +1,24 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
+import time from "../objects/time";
 
-const Select = ({ label, icon, options }) => {
+const Select = ({ label, icon, onChange }) => {
   return (
     <>
       <label className="mb-2">
         <FontAwesomeIcon icon={icon} /> {label}
       </label>
-      <select className="form-select" aria-label="Default select example">
-        <option disabled selected value="">
-          Choose an hour...
-        </option>
-        <option value="09:00:00">9:00 AM</option>
-        <option value="10:00:00">10:00 AM</option>
-        <option value="11:00:00">11:00 AM</option>
-        <option value="13:00:00">1:00 PM</option>
-        <option value="14:00:00">2:00 PM</option>
-        <option value="15:00:00">3:00 PM</option>
-        <option value="16:00:00">4:00 PM</option>
+      <select
+        className="form-select"
+        aria-label="Default select example"
+        onChange={onChange}
+      >
+        <option defaultValue="">Choose an hour...</option>
+        {time.map((time) => (
+          <option key={time.id} value={time.time}>
+            {time.time}
+          </option>
+        ))}
       </select>
     </>
   );
