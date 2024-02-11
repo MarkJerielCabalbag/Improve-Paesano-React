@@ -9,28 +9,29 @@ const initialState = {
   value: {
     barber: [],
     filteredBarber: [],
+
     showInput: false,
 
     //name input
-    clientName: "",
+    clientNameValue: "",
 
     //added name input
-    companionName: "",
+    companionNameValue: "",
 
     //date input
-    date: "",
+    dateValue: "",
 
     //time input
     timeValue: [],
 
     //tel input
-    phoneNumber: [],
+    phoneNumberValue: [],
 
     //service radio input
-    service: [],
+    serviceValue: [],
 
     //added service radio input
-    addedService: [],
+    addedServiceValue: [],
 
     selectedRadio: false,
 
@@ -66,7 +67,7 @@ export const bookSlice = createSlice({
     },
 
     clientName: (state, action) => {
-      state.value.clientName = action.payload;
+      state.value.clientNameValue = action.payload;
     },
 
     companion: (state, action) => {

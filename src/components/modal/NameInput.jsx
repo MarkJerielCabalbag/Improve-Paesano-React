@@ -35,6 +35,7 @@ const NameInput = () => {
         icon={faUser}
         placeholder={"Your name"}
         className={"form-control"}
+        name={"client"}
         onChange={handleChangeInput}
       />
       {show ? (
