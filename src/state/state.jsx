@@ -79,9 +79,7 @@ export const bookSlice = createSlice({
     },
 
     times: (state, action) => {
-      state.value.timeValue = time.filter(
-        (time) => time.time === action.payload
-      );
+      state.value.timeValue = action.payload;
     },
 
     phoneNumber: (state, action) => {
