@@ -22,7 +22,7 @@ const initialState = {
     dateValue: "",
 
     //time input
-    timeValue: [],
+    timeValue: "",
 
     //tel input
     phoneNumberValue: [],
@@ -75,11 +75,13 @@ export const bookSlice = createSlice({
     },
 
     date: (state, action) => {
-      state.value.date = action.payload;
+      state.value.dateValue = action.payload;
     },
 
-    time: (state, action) => {
-      state.value.time = action.payload;
+    times: (state, action) => {
+      state.value.timeValue = time.filter(
+        (time) => time.time === action.payload
+      );
     },
 
     phoneNumber: (state, action) => {
@@ -111,7 +113,7 @@ export const {
 
   clientName,
   companion,
-
+  times,
   date,
   phoneNumber,
 } = bookSlice.actions;

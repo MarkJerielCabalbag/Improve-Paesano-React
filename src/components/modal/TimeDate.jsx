@@ -8,8 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "../input/Select";
 import { useDispatch, useSelector } from "react-redux";
-import { selectedTime } from "../../state/state";
-import time from "../objects/time";
+import { times } from "../../state/state";
 
 const TimeDate = () => {
   const dispatch = useDispatch();

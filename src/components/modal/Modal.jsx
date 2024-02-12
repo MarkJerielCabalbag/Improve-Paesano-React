@@ -10,6 +10,8 @@ import Sessions from "./Sessions";
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
   //const client = useSelector((state) => state.book.value.clientNameValue);
+  const time = useSelector((state) => state.book.value.dateValue);
+  const option = useSelector((state) => state.book.value.timeValue);
 
   return (
     <div>
@@ -65,7 +67,8 @@ const Modal = ({ show, setShow }) => {
                       type="submit"
                       className="btn btn-primary"
                       onClick={() => {
-                        console.log(client);
+                        console.log(time);
+                        console.log(option);
                       }}
                     >
                       Submit

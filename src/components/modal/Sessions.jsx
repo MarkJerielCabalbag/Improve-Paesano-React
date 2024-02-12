@@ -8,7 +8,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 const Sessions = () => {
-  const service = useSelector((state) => state.book.value.service);
+  const service = useSelector((state) => state.book.value.serviceValue);
   return (
     <div>
       {service.map((service) => (
