@@ -8,6 +8,7 @@ const Account = () => {
   const allValue = useSelector((state) => state.book.value.addAllInputValue);
   const selectedService = useSelector((state) => state.book.value.serviceValue);
   console.log([allValue.map((clientname) => clientname.clientName)]);
+  console.log([allValue.map((item) => item)]);
   return (
     <div className="">
       <div className="container">
@@ -39,7 +40,23 @@ const Account = () => {
               <tbody>
                 <tr>
                   {allValue.map((clientname) => (
-                    <td key={shortid.generate()}>{clientname.clientName}</td>
+                    <td key={shortid.generate()}>
+                      {clientname.payload.clientName}
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  {allValue.map((clientname) => (
+                    <td key={shortid.generate()}>
+                      {clientname.payload.clientName}
+                    </td>
+                  ))}
+                </tr>
+                <tr>
+                  {allValue.map((companionname) => (
+                    <td key={shortid.generate()}>
+                      {companionname.payload.companionName}
+                    </td>
                   ))}
                 </tr>
               </tbody>
