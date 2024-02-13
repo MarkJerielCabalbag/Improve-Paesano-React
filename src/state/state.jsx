@@ -25,10 +25,14 @@ const initialState = {
     timeValue: "",
 
     //tel input
-    phoneNumberValue: [],
+    phoneNumberValue: "",
 
     //service radio input
     serviceValue: [],
+
+    selectedServiceValue: "",
+
+    selectedAddedServiceValue: "",
 
     //added service radio input
     addedServiceValue: [],
@@ -71,7 +75,7 @@ export const bookSlice = createSlice({
     },
 
     companion: (state, action) => {
-      state.value.companionName = action.payload;
+      state.value.companionNameValue = action.payload;
     },
 
     date: (state, action) => {
@@ -83,18 +87,29 @@ export const bookSlice = createSlice({
     },
 
     phoneNumber: (state, action) => {
-      state.value.phoneNumber = action.payload;
+      state.value.phoneNumberValue = action.payload;
     },
 
-    service: (state, action) => {
-      state.value.service = services.filter(
+    serviceSelected: (state, action) => {
+      state.value.serviceValue = services.filter(
         (service) => service.id === action.payload
       );
     },
     addedService: (state, action) => {
-      state.value.addedService = addedServices.filter(
+      state.value.addedServiceValue = addedServices.filter(
         (service) => service.id === action.payload
       );
+    },
+
+    addAllValue: (state, action) => {
+      state.value.addAllInputValue.push(action);
+    },
+
+    selectedService: (state, action) => {
+      const selected = services.filter(
+        (item) => item.service === action.payload
+      );
+      state.value.selectedServiceValue = selected;
     },
   },
 });
@@ -102,13 +117,13 @@ export const bookSlice = createSlice({
 export const {
   chooseBarber,
   showInput,
-  service,
+  serviceSelected,
   addedService,
   selectedAddedRadio,
   selectedRadio,
   selectedTime,
-  addAllInputValue,
-
+  addAllValue,
+  selectedService,
   clientName,
   companion,
   times,

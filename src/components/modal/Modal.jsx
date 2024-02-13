@@ -6,12 +6,25 @@ import TimeDate from "./TimeDate";
 import TelNumber from "./TelNumber";
 import Services from "./Services";
 import Sessions from "./Sessions";
+import { addAllValue } from "../../state/state";
 
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
-  //const client = useSelector((state) => state.book.value.clientNameValue);
-  const time = useSelector((state) => state.book.value.dateValue);
-  const option = useSelector((state) => state.book.value.timeValue);
+  const dispatch = useDispatch();
+  //access input value
+  const clientName = useSelector((state) => state.book.value.clientNameValue);
+  const companionName = useSelector(
+    (state) => state.book.value.companionNameValue
+  );
+  const dateValue = useSelector((state) => state.book.value.dateValue);
+  const timeValue = useSelector((state) => state.book.value.timeValue);
+  const phoneNumberValue = useSelector(
+    (state) => state.book.value.phoneNumberValue
+  );
+  const service = useSelector((state) => state.book.value.serviceValue);
+  const addedService = useSelector(
+    (state) => state.book.value.addedServiceValue
+  );
 
   return (
     <div>
@@ -42,6 +55,17 @@ const Modal = ({ show, setShow }) => {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
+                    dispatch(
+                      addAllValue({
+                        clientName,
+                        companionName,
+                        dateValue,
+                        timeValue,
+                        phoneNumberValue,
+                        service,
+                        addedService,
+                      })
+                    );
                   }}
                 >
                   <div
@@ -66,10 +90,7 @@ const Modal = ({ show, setShow }) => {
                     <button
                       type="submit"
                       className="btn btn-primary"
-                      onClick={() => {
-                        console.log(time);
-                        console.log(option);
-                      }}
+                      onClick={() => {}}
                     >
                       Submit
                     </button>

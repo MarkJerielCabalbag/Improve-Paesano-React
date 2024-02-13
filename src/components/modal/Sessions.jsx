@@ -12,16 +12,16 @@ const Sessions = () => {
   return (
     <div>
       {service.map((service) => (
-        <>
+        <div key={service.id}>
           <p className="mt-4">
             <FontAwesomeIcon icon={faCheck} /> Session time
           </p>
 
-          <p key={service.id}>
+          <p>
             <FontAwesomeIcon icon={faUser} /> Your estimated session time is:{" "}
             {service.session}
           </p>
-        </>
+        </div>
       ))}
       <AddedSession />
     </div>
@@ -31,7 +31,9 @@ const Sessions = () => {
 export default Sessions;
 
 const AddedSession = () => {
-  const addedService = useSelector((state) => state.book.value.addedService);
+  const addedService = useSelector(
+    (state) => state.book.value.addedServiceValue
+  );
   const show = useSelector((state) => state.book.value.showInput);
   return (
     <>

@@ -8,11 +8,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Select from "../input/Select";
 import { useDispatch, useSelector } from "react-redux";
-import { times } from "../../state/state";
+import { date } from "../../state/state";
 
 const TimeDate = () => {
   const dispatch = useDispatch();
 
+  const handleChangeDateInput = (e) => {
+    dispatch(date(e.target.value));
+  };
   return (
     <div className="d-flex justify-content-between mt-3">
       <div className="d-flex flex-column" style={{ width: "50%" }}>
@@ -21,6 +24,7 @@ const TimeDate = () => {
           label={"Check-in Date"}
           icon={faCalendarDay}
           className={"form-control"}
+          onChange={handleChangeDateInput}
         />
       </div>
       <div className="d-flex flex-column" style={{ width: "49%" }}>

@@ -11,11 +11,12 @@ import services from "../objects/services";
 import AddedRadio from "../input/AddedRadio";
 import addedServices from "../objects/addedServices";
 import {
-  service,
+  serviceSelected,
   selectedRadio,
   addedService,
   selectedAddedRadio,
   showInput,
+  selectedService,
 } from "../../state/state";
 const Services = () => {
   const show = useSelector((state) => state.book.value.showInput);
@@ -27,7 +28,7 @@ const Services = () => {
   const disptach = useDispatch();
 
   const handleChangeRadio = (id) => {
-    disptach(service(id));
+    disptach(serviceSelected(id));
     disptach(selectedRadio(id));
   };
 
@@ -52,7 +53,10 @@ const Services = () => {
             className={"form-check-input"}
             checked={service.id === radio}
             value={service.id}
-            onChange={() => handleChangeRadio(service.id)}
+            onChange={() => {
+              handleChangeRadio(service.id);
+              disptach(selectedService(service.service));
+            }}
             icon={service.icon}
           />
         ))}

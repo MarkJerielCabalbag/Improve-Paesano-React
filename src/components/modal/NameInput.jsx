@@ -9,9 +9,9 @@ import {
   selectedAddedRadio,
   selectedRadio,
   addedService,
-  service,
   companion,
   clientName,
+  serviceSelected,
 } from "../../state/state";
 const NameInput = () => {
   const show = useSelector((state) => state.book.value.showInput);
@@ -55,7 +55,7 @@ const NameInput = () => {
           dispatch(selectedRadio(true));
           dispatch(selectedAddedRadio(true));
           dispatch(addedService([]));
-          dispatch(service([]));
+          dispatch(serviceSelected([]));
           show ? dispatch(showInput(false)) : dispatch(showInput(true));
         }}
       >
