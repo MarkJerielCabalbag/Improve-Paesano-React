@@ -25,7 +25,6 @@ const Modal = ({ show, setShow }) => {
   const addedService = useSelector(
     (state) => state.book.value.addedServiceValue
   );
-  const [mergeIfHasCompanion, setMergeIfHasCompanion] = useState([]);
 
   return (
     <div>
@@ -56,29 +55,6 @@ const Modal = ({ show, setShow }) => {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    if (companionName === "") {
-                      dispatch(
-                        addAllValue({
-                          clientName,
-                          dateValue,
-                          timeValue,
-                          phoneNumberValue,
-                          service,
-                        })
-                      );
-                    } else {
-                      dispatch(
-                        addAllValue({
-                          clientName,
-                          companionName,
-                          dateValue,
-                          timeValue,
-                          phoneNumberValue,
-                          service,
-                          addedService,
-                        })
-                      );
-                    }
                   }}
                 >
                   <div
@@ -103,7 +79,29 @@ const Modal = ({ show, setShow }) => {
                     <button
                       type="submit"
                       className="btn btn-primary"
-                      onClick={() => {}}
+                      onClick={() => {
+                        show
+                          ? dispatch(
+                              addAllValue({
+                                clientName,
+                                companionName,
+                                dateValue,
+                                timeValue,
+                                phoneNumberValue,
+                                service,
+                                addedService,
+                              })
+                            )
+                          : dispatch(
+                              addAllValue({
+                                clientName,
+                                dateValue,
+                                timeValue,
+                                phoneNumberValue,
+                                service,
+                              })
+                            );
+                      }}
                     >
                       Submit
                     </button>
