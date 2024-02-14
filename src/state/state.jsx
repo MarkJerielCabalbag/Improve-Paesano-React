@@ -102,7 +102,11 @@ export const bookSlice = createSlice({
     },
 
     addAllValue: (state, action) => {
-      state.value.addAllInputValue.push(action);
+      if (state.value.companionNameValue == "") {
+        state.value.addAllInputValue.push(action);
+      } else {
+        state.value.addAllInputValue.push(action);
+      }
     },
 
     selectedService: (state, action) => {

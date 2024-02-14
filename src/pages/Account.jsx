@@ -20,48 +20,21 @@ const Account = () => {
         </div>
 
         <div>
-          <div className="d-flex gap-4">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Client Name</th>
-                  <th scope="col">Companion Name</th>
-                  <th scope="col">Check-in-Date</th>
-                  <th scope="col">Check-in-Time</th>
-                  <th scope="col">Check-in-Date</th>
-                  <th scope="col">Phone Number</th>
-                  <th scope="col">Services for you</th>
-                  <th scope="col">services for your companionr</th>
-                  <th scope="col">estimated time</th>
-                  <th scope="col">estimated time companion</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  {allValue.map((clientname) => (
-                    <td key={shortid.generate()}>
-                      {clientname.payload.clientName}
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  {allValue.map((clientname) => (
-                    <td key={shortid.generate()}>
-                      {clientname.payload.clientName}
-                    </td>
-                  ))}
-                </tr>
-                <tr>
-                  {allValue.map((companionname) => (
-                    <td key={shortid.generate()}>
-                      {companionname.payload.companionName}
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          {allValue.map((item) => (
+            <div className="d-flex gap-4">
+              <div className="card" style={{ width: "500px" }}>
+                <div className="card-body">
+                  <h5 className="card-title">Service Accquired Overview</h5>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                    {item.payload.clientName}
+                  </h6>
+                  <div>
+                    <p className="card-text">{item.payload.selectedService}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -25,6 +25,7 @@ const Modal = ({ show, setShow }) => {
   const addedService = useSelector(
     (state) => state.book.value.addedServiceValue
   );
+  const [mergeIfHasCompanion, setMergeIfHasCompanion] = useState([]);
 
   return (
     <div>
@@ -55,17 +56,29 @@ const Modal = ({ show, setShow }) => {
                 <form
                   onSubmit={(e) => {
                     e.preventDefault();
-                    dispatch(
-                      addAllValue({
-                        clientName,
-                        companionName,
-                        dateValue,
-                        timeValue,
-                        phoneNumberValue,
-                        service,
-                        addedService,
-                      })
-                    );
+                    if (companionName === "") {
+                      dispatch(
+                        addAllValue({
+                          clientName,
+                          dateValue,
+                          timeValue,
+                          phoneNumberValue,
+                          service,
+                        })
+                      );
+                    } else {
+                      dispatch(
+                        addAllValue({
+                          clientName,
+                          companionName,
+                          dateValue,
+                          timeValue,
+                          phoneNumberValue,
+                          service,
+                          addedService,
+                        })
+                      );
+                    }
                   }}
                 >
                   <div
