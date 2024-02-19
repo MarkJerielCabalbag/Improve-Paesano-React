@@ -16,7 +16,7 @@ const initialState = {
     clientNameValue: "",
 
     //added name input
-    companionNameValue: "",
+    companionNameValue: "No companion",
 
     //date input
     dateValue: "",
@@ -43,6 +43,8 @@ const initialState = {
 
     //push all the input values here
     addAllInputValue: [],
+
+    //close modal
   },
 };
 
@@ -102,7 +104,10 @@ export const bookSlice = createSlice({
     },
 
     addAllValue: (state, action) => {
-      state.value.addAllInputValue.push(action);
+      state.value.addAllInputValue.push({
+        ...action.payload,
+        id: shortid.generate(),
+      });
     },
 
     selectedService: (state, action) => {

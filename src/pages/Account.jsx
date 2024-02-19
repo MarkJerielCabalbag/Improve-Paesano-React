@@ -21,15 +21,24 @@ const Account = () => {
 
         <div>
           {allValue.map((item) => (
-            <div className="d-flex gap-4">
+            <div className="d-flex gap-4" key={item.id}>
               <div className="card" style={{ width: "500px" }}>
                 <div className="card-body">
                   <h5 className="card-title">Service Accquired Overview</h5>
                   <h6 className="card-subtitle mb-2 text-body-secondary">
-                    {item.payload.clientName}
+                    {item.clientName}
                   </h6>
                   <div>
-                    <p className="card-text">{item.payload.selectedService}</p>
+                    <p className="card-text">{item.companionName}</p>
+                    <p className="card-text">{item.dateValue}</p>
+                    <p className="card-text">{item.phoneNumberValue}</p>
+                    <p className="card-text">
+                      {selectedService.map(
+                        (serviceType) => serviceType.id === item.service.id
+                      )}
+                    </p>
+                    <p className="card-text">{item.timeValue}</p>
+                    <button className="btn btn-warning">Delete</button>
                   </div>
                 </div>
               </div>

@@ -7,7 +7,7 @@ import TelNumber from "./TelNumber";
 import Services from "./Services";
 import Sessions from "./Sessions";
 import { addAllValue } from "../../state/state";
-
+import shortid from "shortid";
 const Modal = ({ show, setShow }) => {
   const barber = useSelector((state) => state.book.value.barber);
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ const Modal = ({ show, setShow }) => {
     (state) => state.book.value.addedServiceValue
   );
 
+  //const displays = show ? { display: show ? "block" : "none" } : "";
   return (
     <div>
       {show && (
@@ -100,7 +101,8 @@ const Modal = ({ show, setShow }) => {
                                 phoneNumberValue,
                                 service,
                               })
-                            );
+                            ),
+                          setShow(false);
                       }}
                     >
                       Submit
